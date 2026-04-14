@@ -1,33 +1,55 @@
-# 🎬 CinePipeline — Engenharia de Dados com TMDb API
+# 👁️ Project Precog — O Futuro das Notas de Cinema
 
-Projeto educacional de engenharia de dados que utiliza a API pública da TMDb para construir uma pipeline completa: da ingestão à previsão de notas de filmes futuros com técnicas de Machine Learning.
+![Project Precog Status](https://img.shields.io/badge/Status-Ativo-brightgreen)
+![BigQuery](https://img.shields.io/badge/Unit-Containment_BigQuery-blue)
+![Orchestration](https://img.shields.io/badge/Orchestrator-Apache_Airflow-red)
+![Stack](https://img.shields.io/badge/Stack-Python_%7C_SQL_%7C_PowerBI-orange)
 
----
+O **Project Precog** é um ecossistema de dados *end-to-end* inspirado em *Minority Report*, projetado para prever o sucesso crítico de filmes antes de sua estreia através de metadados, análise de sentimento e tendências sociais.
+Este é um projeto não comercial, somente para fins de fixação de aprendizado, explorando toda a stack técnica engenharia, governança, ciência de dados e analytics.
 
-## 📌 Objetivo
-
-Criar uma pipeline profissional para:
-- Ingerir dados públicos de filmes (API TMDb)
-- Normalizar, tratar e transformar os dados
-- Prever notas de filmes futuros com base em gênero, elenco, diretor e estúdio
-- Visualizar os dados e previsões em um painel interativo
+> *"Os Precogs nunca erram. Mas, às vezes... eles discordam."* — Relatório de Minoridade detectado em caso de anomalias de dados.
 
 ---
 
-## 🧭 Premissas
-
-- Projeto educacional
-- Sem custos
-- Stack em Python
-- Engenharia de dados realista
-- Com visão de ML e visualização final
-- De forma alguma possuir fins comerciais
+## 📌 Escopo de Atuação
+Processar a linha do tempo cinematográfica através de:
+- **Ingestão Multi-fonte:** TMDb API (Metadados) e YouTube API (Hype/Engajamento).
+- **Scraping Ético:** Captura dirigida de ratings do Rotten Tomatoes para treinamento de modelos.
+- **Governança por Design:** Documentação rigorosa de metadados, linhagem e qualidade de dados.
+- **Predição:** Modelagem estatística para antecipar o "Audience Score" e "Tomatometer".
+- **Premissas:** Custo zero, fim eduacional.
 
 ---
 
-## 🚧 Status do Projeto
+## 🏗️ Arquitetura da Unidade de Contenção (Medallion + Consumption)
 
-✅ Iniciado | 🔄 Em desenvolvimento
+A arquitetura foi desenhada para garantir integridade, linhagem de dados e performance com **Custo Zero** (Free Tier):
+
+1.  **Bronze (Raw Tank):** Ponto de entrada. Dados brutos (TMDb, YouTube, RT) armazenados em formato original para permitir o reprocessamento histórico completo.
+2.  **Silver (Refining):** Limpeza, padronização de tipos e resolução de conflitos (Relatórios de Minoridade). Cruzamento das fontes externas em uma base relacional limpa.
+3.  **Gold (Semantic Layer):** A "Verdade Única". Tabelas modeladas em formato multidimensional (**Star Schema**), organizando entidades como Filmes, Elenco e Métricas de Hype.
+4.  **Consumo (Vision Layer):** Camada de **Views Dinâmicas** para entrega de dados otimizada:
+    * **`vw_feature_store`**: Visão preparada e normalizada para o treinamento do modelo de Machine Learning.
+    * **`vw_analytics_bi`**: Visão semântica com cálculos pré-agregados (DAX-ready) para o Power BI.
+
+---
+
+## 📦 Stack Tecnológica (Protocolo Precog)
+
+| Camada | Tecnologia | Missão |
+| :--- | :--- | :--- |
+| 🌐 Origem de Dados | `TMDb / YouTube / RT` | Fontes de metadados e comportamento do público. |
+| 🧪 Ingestão | `Python (Requests/BS4)` | Extração e carga na Unidade de Contenção. |
+| 💾 Warehouse | `Google BigQuery` | Unidade de Contenção (Bronze, Silver, Gold). |
+| ⚙️ Orquestração | `Apache Airflow` | O "Diretor" que coordena o fluxo das tarefas. |
+| ✨ Transformação | `SQL (BigQuery)` | Refinamento Medallion e lógica de negócio. |
+| 🤖 Ciência de Dados | `Scikit-Learn / BQML` | Modelos de regressão para predição de ratings. |
+| 📊 Visualização | `Power BI` | Interface analítica de pre-crime para tomada de decisão. |
+| 📐 Modelagem Conceitual | `dbdiagram.io` | Ferramenta online para criar diagramas ER claros e colaborativos. |
+| 🔄 Linhagem de Dados | `OpenLineage` | Padrão aberto para rastreamento e controle de linhagem de dados. |
+| 📖 Glossário de Dados | `Notion`, `Google Docs` ou `Markdown` | Plataformas colaborativas para manter definição clara de termos e métricas. |
+| 🏗 Arquitetura da Solução | `Lucidchart` | Ferramenta visual para diagramas técnicos e fluxos, fácil de usar e compartilhar |
 
 ---
 
@@ -35,28 +57,7 @@ Criar uma pipeline profissional para:
 
 ![Arquitetura do Projeto](docs/architecture.png)
 
-> A arquitetura segue o padrão bronze → silver → gold com ingestão via Python, transformação com dbt + DuckDB e visualização com Streamlit.
-
----
-
-## 📦 Tecnologias Utilizadas
-
-| Camada                      | Tecnologia                                | Justificativa técnica                                                                  |
-| --------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------- |
-| 🌐 Origem dos Dados         | `APIs da TMDb`                            | Fonte pública e gratuita com dados ricos sobre filmes                                  |
-| 🧪 Ingestão (API)           | `Python + requests`                       | Ideal para capturar dados da TMDb, leve e direto                                       |
-| 🔐 Segredos                 | `dotenv`                                  | Evita expor API Keys. Padrão em projetos Python                                        |
-| 🧺 Armazenamento bruto      | `MinIO`                                   | Armazenamento local compatível com S3, gratuito e ideal para desenvolvimento           |
-| 🧮 Processamento e ETL      | `Pandas`                                  | Biblioteca robusta e consagrada para manipulação de dados tabulares                    |
-| ⚙️ Orquestração             | `Airflow (local)`                         | Profissional e gratuito; pode rodar local com Docker                                   |
-| ✨ Transformações analíticas | `dbt (com DuckDB)`                       | `dbt-core` com `DuckDB` para evitar custos com warehouses                              |
-| 💾 Data Warehouse local     | `DuckDB`                                  | Data Warehouse leve e local                                                            |
-| 📊 Visualização             | `Streamlit`                               | Roda local sem servidor, 100% Python. Visualização interativa                          |
-| 🤖 Machine Learning         | `scikit-learn` + `pandas`                 | Conjunto padrão para modelagem supervisionada com ótimo desempenho                     |
-| 📐 Modelagem Conceitual     | `dbdiagram.io`                            | Ferramenta online para criar diagramas ER claros e colaborativos                       |
-| 🔄 Linhagem de Dados        | `OpenLineage`                             | Padrão aberto para rastreamento e controle de linhagem de dados                        |
-| 📖 Glossário de Dados       | `Notion`, `Google Docs` ou Markdown       | Plataformas colaborativas para manter definição clara de termos e métricas             |
-| 🏗 Arquitetura da Solução   | `Lucidchart`                              | Ferramenta visual para diagramas técnicos e fluxos, fácil de usar e compartilhar       |
+> A arquitetura segue o padrão bronze → silver → gold.
 
 ---
 
@@ -65,34 +66,20 @@ Criar uma pipeline profissional para:
 - 🧩 Modelagem Conceitual
 - 📚 Glossário de Dados
 - 🔗 Linhagem de Dados
-- 🗺️ Roadmap do Projeto
-- 🔧 Boas Práticas de Git
+- 🗺️ Desenho de Solução
 
 ---
 
 ## ⚙️ Como rodar o projeto
 
 ```bash
-1. Configurar variáveis de ambiente
-Crie seu arquivo `.env` baseado no `.env.example`:
-cp .env.example .env
-Preencha sua TMDb API Key e demais configurações.
-
-2. Instalar dependências
-pip install -r requirements.txt
-
-3. Rodar ingestão de dados
-python ingestao_tmdb.py
-
-4. Rodar transformação (com dbt + DuckDB)
-cd transform/
-dbt run
-
-5. Rodar previsão de nota (ML)
-python predict.py
-
-6. Visualizar painel com resultados
-streamlit run dashboard.py
+1. Configurar variáveis de ambiente:
+   Crie um `.env` baseado no `.env.example` com suas chaves de API e credenciais GCP.
+2. Ativar a Unidade de Contenção:
+   ```bash
+   python -m venv precog_env
+   source precog_env/bin/activate  # ou .\precog_env\Scripts\activate
+   pip install -r requirements.txt
 ```
 ---
 
