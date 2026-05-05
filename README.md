@@ -22,6 +22,18 @@ Processar a linha do tempo cinematográfica através de:
 
 ---
 
+## 🏗️ Arquitetura da Solução
+
+Abaixo está o fluxo completo de dados do **Project Precog**, desde a captura nas origens até a entrega da predição no dashboard.
+
+![Arquitetura Project Precog](docs/architecture_precog.png)
+
+🔗 [**Clique aqui para visualizar o diagrama interativo no Lucidchart**](https://lucid.app/lucidchart/22ed68c4-6d73-4734-9e80-438514f33f42/edit?viewport_loc=-279%2C9%2C3231%2C1509%2C0_0&invitationId=inv_02691bc4-7c4e-4f47-a724-8c633ebbc3ab)
+
+> A arquitetura segue o padrão bronze → silver → gold no **Google BigQuery**, orquestrado via **Apache Airflow**, garantindo a linhagem e a integridade das camadas. 
+
+---
+
 ## 🏗️ Arquitetura da Unidade de Contenção (Medallion + Consumption)
 
 A arquitetura foi desenhada para garantir integridade, linhagem de dados e performance com **Custo Zero** (Free Tier):
@@ -53,22 +65,13 @@ A arquitetura foi desenhada para garantir integridade, linhagem de dados e perfo
 
 ---
 
-## 🏗️ Arquitetura da Solução
-
-Abaixo está o fluxo completo de dados do **Project Precog**, desde a captura nas origens até a entrega da predição no dashboard.
-
-![Arquitetura Project Precog](docs/architecture_precog.png)
-
-> A arquitetura segue o padrão bronze → silver → gold no **Google BigQuery**, orquestrado via **Apache Airflow**, garantindo a linhagem e a integridade das camadas. 
-
----
-
 ## 🧾 Documentação Auxiliar
 
 - 🧩 Modelagem Conceitual
 - 📚 Glossário de Dados
 - 🔗 Linhagem de Dados
-- 🗺️ Desenho de Solução
+- 🗺️ [**Desenho de Solução**](https://lucid.app/lucidchart/22ed68c4-6d73-4734-9e80-438514f33f42/edit?viewport_loc=-279%2C9%2C3231%2C1509%2C0_0&invitationId=inv_02691bc4-7c4e-4f47-a724-8c633ebbc3ab)
+ 
 
 ---
 
