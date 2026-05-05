@@ -55,9 +55,11 @@ A arquitetura foi desenhada para garantir integridade, linhagem de dados e perfo
 
 ## 🏗️ Arquitetura da Solução
 
-![Arquitetura do Projeto](docs/architecture.png)
+Abaixo está o fluxo completo de dados do **Project Precog**, desde a captura nas origens até a entrega da predição no dashboard.
 
-> A arquitetura segue o padrão bronze → silver → gold.
+![Arquitetura Project Precog](docs/architecture_precog.png)
+
+> A arquitetura segue o padrão bronze → silver → gold no **Google BigQuery**, orquestrado via **Apache Airflow**, garantindo a linhagem e a integridade das camadas. 
 
 ---
 
