@@ -1,1 +1,25 @@
+# --- Segredos e Credenciais (CRÍTICO) ---
 .env
+*.json
+!architecture_precog.png  # Exceção caso queira manter o diagrama, mas cuidado com JSONs de chaves do Google Cloud!
+credentials/
+
+# --- Ambiente Virtual Python ---
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Dados e Temporários ---
+data/raw/*
+data/processed/*
+!data/.gitkeep
+*.log
+.DS_Store
+Thumbs.db
+
+# --- Ferramentas de Desenvolvimento ---
+.vscode/
+.idea/
